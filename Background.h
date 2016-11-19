@@ -36,10 +36,10 @@ class Background{
 	void generate(string fileName, int numFrames);
 
 	/*
-	 * description: draws the background to the screen
+	 * description: draws the background to the buffer
 	 * return: void
 	 * precondition: plotter exists
-	 * postcondition: background is draw to the screen
+	 * postcondition: background is drawn to the buffer
 	 */
 	void draw(SDL_Plotter& g, int frame);
 };

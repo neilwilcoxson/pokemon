@@ -57,5 +57,5 @@ void Background::draw(SDL_Plotter& g, int frame){
 							  backgroundSequence[frame][r][c].B);
 		}
 	}
-	g.update();
+	//draw function does not update the screen, must be called in driver
 }
