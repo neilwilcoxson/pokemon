@@ -32,6 +32,15 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Background.cpp" />
+		<Unit filename="Background.h" />
+		<Unit filename="BatteryMeter.cpp" />
+		<Unit filename="BatteryMeter.h" />
+		<Unit filename="Pokeball.cpp" />
+		<Unit filename="Pokeball.h" />
+		<Unit filename="Pokemon.cpp" />
+		<Unit filename="Pokemon.h" />
+		<Unit filename="SDL_Plotter.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
