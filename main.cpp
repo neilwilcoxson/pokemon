@@ -10,10 +10,11 @@ const int WIN_RES_ROWS = 480;
 //Horizontal resolution (Columns or X-Values)
 const int WIN_RES_COLS = 640;
 
-//Base name of background input files (ex. background0 --> background)
+//Base name of background input file
 const string BKG_IMG_NAME = "background";
-//Number of background frames to be imported
-const int NUM_BKG_FRAMES = 5;
+
+//Number of background frames
+const int BKG_FRAME_NUM = 5;
 
 int main(int argc, char *argv[])
 {
@@ -21,13 +22,17 @@ int main(int argc, char *argv[])
 	SDL_Plotter g(WIN_RES_ROWS,WIN_RES_COLS);
 	//Background object for main level is created
 	Background forest;
-	forest.generate(BKG_IMG_NAME,NUM_BKG_FRAMES);
+	forest.generate(BKG_IMG_NAME);
+
+	Battery bat;
+	bat.setBatteryLife(60);
 
 	int frame = 0;	//Current background frame
 
     //Keep window open until quit state is reached (ESC)
     while (!g.getQuit()){
     	forest.draw(g,frame);
+    	bat.displayMeter(g,0,0);
     	g.update();
     		if(g.kbhit()){
     	    	g.getKey();
@@ -35,7 +40,7 @@ int main(int argc, char *argv[])
     	g.Sleep(100);
     	//Increment current frame number and keep within valid range
     	frame++;
-    	frame %= NUM_BKG_FRAMES;
+    	frame %= BKG_FRAME_NUM;
     }
     return 0;
 }

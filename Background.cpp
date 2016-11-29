@@ -9,41 +9,34 @@
 
 #include "Background.h"
 
-void Background::generate(string fileName, int numFrames){
-	frames = numFrames;
+void Background::generate(string fileName){
+	ifstream file(fileName.c_str());
+	file >> frames >> row >> col;
 	//Make vector reflect number of frames
 	backgroundSequence.resize(frames);
 
-	for(int fileNumber = 0; fileNumber < frames; fileNumber++){
-		//Open the background file
-		ifstream file((fileName+to_string(fileNumber)).c_str());
-		if(!file){
-			cout << "Background File Failed To Open" << endl;
+	for(int frameNumber = 0; frameNumber < frames; frameNumber++){
+
+		//Resize vector for row dimension
+		backgroundSequence[frameNumber].resize(row);
+
+		//Resize vector for column dimension
+		for(int i = 0; i < row; i++){
+			backgroundSequence[frameNumber][i].resize(col);
 		}
-		else{
-			//Read number of rows and columns from first two lines of file
-			file >> row >> col;
 
-			//Resize vector for row dimension
-			backgroundSequence[fileNumber].resize(row);
-
-			//Resize vector for column dimension
-			for(int i = 0; i < row; i++){
-				backgroundSequence[fileNumber][i].resize(col);
+		//read background data into vector
+		for(int r = 0; r < row; r++){
+			for(int c = 0; c < col; c++){
+				file >> backgroundSequence[frameNumber][r][c].R
+				>> backgroundSequence[frameNumber][r][c].G
+				>> backgroundSequence[frameNumber][r][c].B;
 			}
-
-			//read background data into vector
-			for(int r = 0; r < row; r++){
-				for(int c = 0; c < col; c++){
-					file >> backgroundSequence[fileNumber][r][c].R
-					>> backgroundSequence[fileNumber][r][c].G
-					>> backgroundSequence[fileNumber][r][c].B;
-				}
-			}
-
-			file.close();
 		}
+
+		getline(file,temp);
 	}
+	file.close();
 }
 
 void Background::draw(SDL_Plotter& g, int frame){

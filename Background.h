@@ -25,15 +25,16 @@ class Background{
 	private:
 	vector<vector<vector<Pixel> > > backgroundSequence;
 	int frames, row, col;
+	string temp;
 
 	public:
 	/*
 	 * description: initializes background and loads files
 	 * return: void
-	 * precondition: background files and number of frames exist
+	 * precondition: background file exists
 	 * postcondition: background is loaded to vector
 	 */
-	void generate(string fileName, int numFrames);
+	void generate(string fileName);
 
 	/*
 	 * description: draws the background to the buffer
