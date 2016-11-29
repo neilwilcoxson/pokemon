@@ -29,17 +29,16 @@ void Pokemon::generate(string filename, int frame){
 }
 
 void Pokemon::draw(SDL_Plotter& g, int frame, int x, int y){
-    
     for(rowD = 0; rowD < dem1 && y + rowD < g.getRow(); rowD++ ){
         for(colD = 0; colD < dem2 && x + colD < g.getCol(); colD++ ){
             
             //This is to ensure we don't print the white background
-            if(!(graphic[frameD][rowD][colD].R >= 245 &&
-                 graphic[frameD][rowD][colD].G >= 245 &&
-                 graphic[frameD][rowD][colD].B >= 245)){
+            if(!(graphic[frame][rowD][colD].R >= 245 &&
+                 graphic[frame][rowD][colD].G >= 245 &&
+                 graphic[frame][rowD][colD].B >= 245)){
                 
-                    g.plotPixel( x + colD, y + rowD, graphic[frameD][rowD][colD].R,
-                       graphic[frameD][rowD][colD].G, graphic[frameD][rowD][colD].B);
+                    g.plotPixel( x + colD, y + rowD, graphic[frame][rowD][colD].R,
+                       graphic[frame][rowD][colD].G, graphic[frame][rowD][colD].B);
             }
         }
     }
