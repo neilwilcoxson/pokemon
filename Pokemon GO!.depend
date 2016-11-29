@@ -1,6 +1,9 @@
 # depslib dependency file v1.0
-1480384208 source:c:\users\westo\documents\github\pokemon\background.cpp
+1480384208 source:c:\users\westo\documents\github\pokemon\main.cpp
+	<iostream>
+	<string>
 	"Background.h"
+	"BatteryMeter.h"
 
 1480384208 c:\users\westo\documents\github\pokemon\background.h
 	"SDL_Plotter.h"
@@ -17,17 +20,14 @@
 	<string.h>
 	<map>
 
-1480375653 source:c:\users\westo\documents\github\pokemon\batterymeter.cpp
-	"BatteryMeter.h"
-
 1480375653 c:\users\westo\documents\github\pokemon\batterymeter.h
 	<ctime>
 	"SDL_Plotter.h"
 
-1480384208 source:c:\users\westo\documents\github\pokemon\main.cpp
-	<iostream>
-	<string>
+1480384208 source:c:\users\westo\documents\github\pokemon\background.cpp
 	"Background.h"
+
+1480375653 source:c:\users\westo\documents\github\pokemon\batterymeter.cpp
 	"BatteryMeter.h"
 
 1480391418 source:c:\users\westo\documents\github\pokemon\pokemon.cpp
