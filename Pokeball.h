@@ -22,6 +22,8 @@ class Pokeball
     public:
         void generate(string, int);
         void draw(SDL_Plotter& g, int frame, int x, int y);
+        void drawThrow(SDL_Plotter& g, int frame, int x, int y, int goX, int goY);
+        void drawCatch(SDL_Plotter& g, int frame, int x, int y, int goX, int goY);
 };
 
 #endif // POKEBALL_H_INCLUDED
