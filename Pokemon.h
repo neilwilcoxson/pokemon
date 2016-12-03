@@ -25,12 +25,13 @@ class Pokemon{
     vector<vector<vector<Pixels> > >graphic;
     int dem1, dem2;
     string line;
-    int frameD, colD, rowD;
-    
+    int frames;
+
     public:
-    void generate(string, int);
+    void generate(string);
     void draw(SDL_Plotter& g, int frame, int x, int y);
-    
+    int getFrames();
+
 };
 
 
