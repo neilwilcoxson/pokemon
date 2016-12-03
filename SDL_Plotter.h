@@ -14,8 +14,8 @@
 //#include <SDL2/SDL_thread.h>
 
 //Windows Library
-#include <SDL.h>
-#include <SDL_mixer.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 
 #include <string.h>
 #include <iostream>
@@ -43,6 +43,7 @@ static int Sound(void *data);
 struct param{
 	bool play;
 	bool running;
+	bool pause;
 	SDL_Thread*  threadID;
 	SDL_cond *cond;
 	SDL_mutex *mut;
@@ -51,6 +52,7 @@ struct param{
 	param(){
 		play = false;
 		running = false;
+		pause = false;
 	}
 };
 
@@ -188,6 +190,7 @@ public:
 		if(currentKeyStates[SDL_SCANCODE_UP])    key = UP_ARROW;
 		if(currentKeyStates[SDL_SCANCODE_LEFT])  key = LEFT_ARROW;
 		if(currentKeyStates[SDL_SCANCODE_RIGHT]) key = RIGHT_ARROW;
+		if(currentKeyStates[SDL_SCANCODE_RETURN]) key = SDL_SCANCODE_RETURN;
 		if(currentKeyStates[SDL_SCANCODE_ESCAPE]) quit = true;
 
     	return key;
@@ -210,6 +213,7 @@ public:
     }
 
     void initSound(string sound){
+    	int  *threadReturnValue;
 
 		if(!soundMap[sound].running){
 				param* p = &soundMap[sound];
@@ -217,9 +221,14 @@ public:
 				p->cond = SDL_CreateCond();
 				p->mut = SDL_CreateMutex();
 
-				p->threadID = SDL_CreateThread( Sound, "SoundThread", (void*)p );
-				SDL_DetachThread(p->threadID);
+				p->threadID = SDL_CreateThread( Sound, sound.c_str(), (void*)p );
+				//p->threadID = SDL_CreateThread( Sound, "SoundThread", (void*)p );
+				//SDL_DetachThread(p->threadID);
 		}
+    }
+
+    void setQuit(bool flag){
+    	this->quit = flag;
     }
 
     void playSound(string sound){
@@ -230,6 +239,7 @@ public:
 
     void quitSound(string sound){
     	soundMap[sound].running = false;
+    	SDL_CondSignal(soundMap[sound].cond);
     }
 
     void Sleep(int ms){
@@ -245,18 +255,17 @@ static int Sound(void *data){
 	param *p = (param*)data;
 	p->running = true;
 	Mix_Chunk *gScratch = NULL;
-	//Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 );
 	gScratch = Mix_LoadWAV( p->name.c_str() );
 
 
 	while(p->running){
-
 		SDL_mutexP( p->mut );
-		SDL_CondWait(p->cond, p->mut);
-			Mix_PlayChannel( -1, gScratch, 0 );
-			p->play = false;
-			SDL_mutexV(p->mut);
+		  SDL_CondWait(p->cond, p->mut);
+		  Mix_PlayChannel( -1, gScratch, 0 );
+		  p->play = false;
+		SDL_mutexV(p->mut);
 	}
+
 	Mix_FreeChunk( gScratch );
 	p->running = false;
 	return 0;
