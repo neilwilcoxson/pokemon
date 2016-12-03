@@ -15,13 +15,20 @@
 
 using namespace std;
 
+struct Color{
+    int R,G,B;
+};
+
 class Battery{
 	private:
 	int timeBatStart, timeBatEnd;
 	int totalTime, timeRemaining;
+	int level = 2;
 	double batteryPercent;
+	Color batteryLevel[3];
 
 	public:
+    Battery();
 	/*
 	 * description: sets the amount of time for which the battery will last
 	 * return: void
