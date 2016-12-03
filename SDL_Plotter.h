@@ -88,7 +88,7 @@ public:
 
     	SDL_Init(SDL_INIT_AUDIO);
 
-        window   = SDL_CreateWindow("SDL2 Pixel Drawing",
+        window   = SDL_CreateWindow("Pokemon Go!",
         		                     SDL_WINDOWPOS_UNDEFINED,
         		                     SDL_WINDOWPOS_UNDEFINED, col, row, 0);
 
