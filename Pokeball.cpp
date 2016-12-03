@@ -25,9 +25,9 @@ void Pokeball::draw(SDL_Plotter& g, int frame, int x, int y){
         for(colD = 0; colD < dem2 && x + colD < g.getCol(); colD++ ){
 
             //This is to ensure we don't print the white background
-            if(!(graphic[frame][rowD][colD].R >= 245 &&
-                 graphic[frame][rowD][colD].G >= 245 &&
-                 graphic[frame][rowD][colD].B >= 245)){
+            if(!(graphic[frame][rowD][colD].R == 236 &&
+                 graphic[frame][rowD][colD].G == 243 &&
+                 graphic[frame][rowD][colD].B == 250)){
 
                     g.plotPixel( x + colD, y + rowD, graphic[frame][rowD][colD].R,
                        graphic[frame][rowD][colD].G, graphic[frame][rowD][colD].B);
@@ -37,8 +37,9 @@ void Pokeball::draw(SDL_Plotter& g, int frame, int x, int y){
     return;
 }
 
-void Pokeball::drawThrow(SDL_Plotter& g, int frame, int x, int y, int goX, int goY)
+bool Pokeball::drawThrow(SDL_Plotter& g, int frame, int x, int y, int goX, int goY)
 {
+    bool caught = false;
     while(x != goY && y != goY)
     {
         int difx = 1;
@@ -57,9 +58,9 @@ void Pokeball::drawThrow(SDL_Plotter& g, int frame, int x, int y, int goX, int g
             for(colD = 0; colD < dem2 && x + colD < g.getCol(); colD++ ){
 
                 //This is to ensure we don't print the white background
-                if(!(graphic[frame][rowD][colD].R >= 245 &&
-                     graphic[frame][rowD][colD].G >= 245 &&
-                     graphic[frame][rowD][colD].B >= 245)){
+                if(!(graphic[frame][rowD][colD].R == 236 &&
+                     graphic[frame][rowD][colD].G == 243 &&
+                     graphic[frame][rowD][colD].B == 250)){
 
                         g.plotPixel( x + colD, y + rowD, graphic[frame][rowD][colD].R,
                            graphic[frame][rowD][colD].G, graphic[frame][rowD][colD].B);
@@ -68,39 +69,12 @@ void Pokeball::drawThrow(SDL_Plotter& g, int frame, int x, int y, int goX, int g
         }
     }
 
-    return;
-}
+    /*
+     *if(x - 100 <= pokemon.x && y - 100 <= pokemon.y)
+     *{
+     *   caught = true;
+     *}
+     */
 
-void Pokeball::drawCatch(SDL_Plotter& g, int frame, int x, int y, int goX, int goY)
-{
-    while(x != goY && y != goY)
-    {
-        int difx = 1;
-        int dify = 1;
-        if(x > goX)
-        {
-            difx = -1;
-        }
-        if(y < goY)
-        {
-            dify = -1;
-        }
-        x += difx;
-        y += dify;
-        for(rowD = 0; rowD < dem1 && y + rowD < g.getRow(); rowD++ ){
-            for(colD = 0; colD < dem2 && x + colD < g.getCol(); colD++ ){
-
-                //This is to ensure we don't print the white background
-                if(!(graphic[frame][rowD][colD].R >= 245 &&
-                     graphic[frame][rowD][colD].G >= 245 &&
-                     graphic[frame][rowD][colD].B >= 245)){
-
-                        g.plotPixel( x + colD, y + rowD, graphic[frame][rowD][colD].R,
-                           graphic[frame][rowD][colD].G, graphic[frame][rowD][colD].B);
-                }
-            }
-        }
-    }
-
-    return;
+    return caught;
 }

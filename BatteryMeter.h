@@ -23,7 +23,7 @@ class Battery{
 	private:
 	long int timeBatStart, timeBatEnd;
 	long int totalTime, timeRemaining;
-	int level = 2;
+	int level;
 	double batteryPercent;
 	Color batteryLevel[3];
 	int row, col;

@@ -1,3 +1,14 @@
+/*
+* Author: Weston Straw
+* Assignment Title: PokemonGo (Group Project)
+* Assignment Description: A simple game inspired by the popular mobile game
+* Due Date: 12/5/2016
+* Date Created: 11/18/2016
+* Date Last Modified: 12/2/2016
+*/
+
+//.h to create the pokeball and throw it
+
 #ifndef POKEBALL_H_INCLUDED
 #define POKEBALL_H_INCLUDED
 
@@ -22,8 +33,7 @@ class Pokeball
     public:
         void generate(string, int);
         void draw(SDL_Plotter& g, int frame, int x, int y);
-        void drawThrow(SDL_Plotter& g, int frame, int x, int y, int goX, int goY);
-        void drawCatch(SDL_Plotter& g, int frame, int x, int y, int goX, int goY);
+        bool drawThrow(SDL_Plotter& g, int frame, int x, int y, int goX, int goY);
 };
 
 #endif // POKEBALL_H_INCLUDED

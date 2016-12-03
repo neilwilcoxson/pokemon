@@ -19,6 +19,7 @@ Battery::Battery(){
     batteryLevel[0].R = 255;
     batteryLevel[0].G = 50;
     batteryLevel[0].B = 0;
+    level = 2;
 }
 
 void Battery::setBatteryLife(int seconds){
@@ -76,4 +77,9 @@ void Battery::getPosition(int& r, int& c){
     r = row;
     c = col;
     return;
+}
+
+double Battery::getBatteryLevel()
+{
+    return batteryPercent;
 }
