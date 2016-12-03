@@ -11,6 +11,8 @@
 #define CIRCLE_H_
 
 #include <vector>
+#include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -26,7 +28,7 @@ class Circle{
 	public:
 	    void generate(string fileName);
 		void draw(int row, int col);
-		void move(direction dir)
+		void move(direction dir);
 		void getPosition(int& row, int& col);
 };
 
