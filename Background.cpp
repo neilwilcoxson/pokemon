@@ -4,7 +4,7 @@
 * Assignment Description: A simple game inspired by the popular mobile game
 * Due Date: 12/5/2016
 * Date Created: 11/18/2016
-* Date Last Modified: 11/18/2016
+* Date Last Modified: 12/2/2016
 */
 
 #include "Background.h"
@@ -51,4 +51,17 @@ void Background::draw(SDL_Plotter& g, int frame){
 		}
 	}
 	//draw function does not update the screen, must be called in driver
+}
+
+Pixel Background::getColor(int frame, int row, int col){
+    Pixel value;
+    value.R = backgroundSequence[frame][row][col].R;
+    value.G = backgroundSequence[frame][row][col].G;
+    value.B = backgroundSequence[frame][row][col].B;
+
+    return value;
+}
+
+int Background::getFrames(){
+    return frames;
 }

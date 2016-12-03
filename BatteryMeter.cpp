@@ -4,7 +4,7 @@
 * Assignment Description: A simple game inspired by the popular mobile game
 * Due Date: 12/5/2016
 * Date Created: 11/18/2016
-* Date Last Modified: 11/18/2016
+* Date Last Modified: 12/2/2016
 */
 
 #include "BatteryMeter.h"
@@ -25,9 +25,12 @@ void Battery::setBatteryLife(int seconds){
 	timeBatStart = time(0);
 	timeBatEnd = timeBatStart + seconds;
 	totalTime = seconds;
+	return;
 }
 
 void Battery::displayMeter(SDL_Plotter& g, int rowPos, int colPos){
+    row = rowPos;
+    col = colPos;
 	timeRemaining = timeBatEnd - time(0);
 	batteryPercent = static_cast<double>(timeRemaining)/totalTime;
 
@@ -66,4 +69,11 @@ void Battery::displayMeter(SDL_Plotter& g, int rowPos, int colPos){
                             batteryLevel[level].G, batteryLevel[level].B);
 		}
 	}
+	return;
+}
+
+void Battery::getPosition(int& r, int& c){
+    r = row;
+    c = col;
+    return;
 }

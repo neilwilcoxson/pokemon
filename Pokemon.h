@@ -10,6 +10,9 @@
 #define Pokemon_h
 
 #include "SDL_Plotter.h"
+#include "Background.h"
+#include "BatteryMeter.h"
+#include "Overlays.h"
 #include <string>
 #include <vector>
 #include <fstream>
@@ -26,10 +29,12 @@ class Pokemon{
     int dem1, dem2;
     string line;
     int frames;
+    int curX, curY;
 
     public:
     void generate(string);
     void draw(SDL_Plotter& g, int frame, int x, int y);
+    void erase(SDL_Plotter& g, Background bk, int frame, Battery bat);
     int getFrames();
 
 };

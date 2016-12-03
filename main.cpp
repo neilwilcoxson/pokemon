@@ -3,6 +3,7 @@
 #include "Background.h"		//Background initialization and drawing
 #include "BatteryMeter.h"
 #include "Pokemon.h"
+#include "Overlays.h"
 
 using namespace std;
 
@@ -56,7 +57,10 @@ int main(int argc, char *argv[])
     	    	g.getKey();
     		}
     	g.Sleep(100);
-    	//Increment current frame number and keep within valid range
+    	pokemonObjects[1].erase(g,city,frame%city.getFrames(),bat);
+    	g.update();
+    	g.Sleep(100);
+    	//Increment current frame number
     	frame++;
     }
     return 0;

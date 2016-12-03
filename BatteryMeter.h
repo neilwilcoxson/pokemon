@@ -4,7 +4,7 @@
 * Assignment Description: A simple game inspired by the popular mobile game
 * Due Date: 12/5/2016
 * Date Created: 11/18/2016
-* Date Last Modified: 11/18/2016
+* Date Last Modified: 12/2/2016
 */
 
 #ifndef BATTERYMETER_H_
@@ -26,6 +26,7 @@ class Battery{
 	int level = 2;
 	double batteryPercent;
 	Color batteryLevel[3];
+	int row, col;
 
 	public:
     Battery();
@@ -43,6 +44,8 @@ class Battery{
 	 * postcondition: battery meter is drawn to the buffer
 	 */
 	void displayMeter(SDL_Plotter& g, int rowPos, int colPos);
+
+	void getPosition(int& r, int& c);
 };
 
 

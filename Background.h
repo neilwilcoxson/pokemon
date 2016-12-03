@@ -4,7 +4,7 @@
 * Assignment Description: A simple game inspired by the popular mobile game
 * Due Date: 12/5/2016
 * Date Created: 11/18/2016
-* Date Last Modified: 11/18/2016
+* Date Last Modified: 12/2/2016
 */
 
 #ifndef BACKGROUND_H_
@@ -43,6 +43,22 @@ class Background{
 	 * postcondition: background is drawn to the buffer
 	 */
 	void draw(SDL_Plotter& g, int frame);
+
+	/*
+	 * description: gets the number of frames the background consists of
+	 * return: int
+	 * precondition: background exists
+	 * postcondition: number of background frames are returned
+	 */
+	int getFrames();
+
+	/*
+	 * description: gets the background color of a pixel
+	 * return: Pixel
+	 * precondition: background exists
+	 * postcondition: Pixel at location returned
+	 */
+	Pixel getColor(int frame, int row, int col);
 };
 
 

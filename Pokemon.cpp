@@ -29,6 +29,8 @@ void Pokemon::generate(string filename){
 }
 
 void Pokemon::draw(SDL_Plotter& g, int frame, int x, int y){
+    curX = x;
+    curY = y;
     for(int rowD = 0; rowD < dem1 && y + rowD < g.getRow(); rowD++ ){
         for(int colD = 0; colD < dem2 && x + colD < g.getCol(); colD++ ){
 
@@ -42,6 +44,19 @@ void Pokemon::draw(SDL_Plotter& g, int frame, int x, int y){
             }
         }
     }
+    return;
+}
+
+void Pokemon::erase(SDL_Plotter& g, Background bk, int frame, Battery bat){
+    Pixel color;
+    for(int y = curY; y < dem1 && curY + y < g.getRow(); y++){
+        for(int x = curX; x < dem2 && curX + x < g.getRow(); x++){
+            g.plotPixel(x,y,bk.getColor(frame,y,x).R,
+                            bk.getColor(frame,y,x).G,
+                            bk.getColor(frame,y,x).B);
+        }
+    }
+    drawOverlays(g,bat);
     return;
 }
 
