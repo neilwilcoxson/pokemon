@@ -21,8 +21,8 @@ struct Color{
 
 class Battery{
 	private:
-	int timeBatStart, timeBatEnd;
-	int totalTime, timeRemaining;
+	long int timeBatStart, timeBatEnd;
+	long int totalTime, timeRemaining;
 	int level = 2;
 	double batteryPercent;
 	Color batteryLevel[3];
@@ -46,6 +46,8 @@ class Battery{
 	void displayMeter(SDL_Plotter& g, int rowPos, int colPos);
 
 	void getPosition(int& r, int& c);
+
+	double getBatteryLevel();
 };
 
 

@@ -5,6 +5,7 @@
 #include "Pokemon.h"
 #include "Overlays.h"
 #include <ctime>
+#include <windows.h>
 
 using namespace std;
 
@@ -21,11 +22,13 @@ const string BKG_IMG_NAME = "bkrd";
 
 int main(int argc, char *argv[])
 {
+	//Hide the console window (Windows only)
+	FreeConsole();
 	//Primary display plotter is created
 	SDL_Plotter g(WIN_RES_ROWS,WIN_RES_COLS);
 
 	//Keep track of time program started
-	int startTime = time(0);
+	long int startTime = time(0);
 
 	Background loading;
 	loading.generate("loading");
@@ -107,6 +110,10 @@ int main(int argc, char *argv[])
     	//g.Sleep(100);
     	//Increment current frame number
     	frame++;
+
+    	if(bat.getBatteryLevel() <= 0){
+    		gameOver = true;
+    	}
     }
     return 0;
 }
