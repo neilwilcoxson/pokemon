@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 	//Keep track of time program started
 	long int startTime = time(0);
 
-	int caught;
+	int caught = -1, numCaught = 0, poke = 0;
 
 	Background loading;
 	loading.generate("loading");
@@ -75,6 +75,10 @@ int main(int argc, char *argv[])
     //Create battery
 	Battery bat;
 	bool gameOver = false;
+
+	//Create win screen
+	Background winScreen;
+	winScreen.generate("winscreen");
 
 	//Create end screen
 	Background endScreen;
@@ -123,7 +127,19 @@ int main(int argc, char *argv[])
     while (!g.getQuit() && !gameOver){
         city.draw(g,0);
         bat.displayMeter(g,5,5);
-        pokemonObjects[1].draw(g,frame%pokemonObjects[1].getFrames(),400,300);
+        if(!pokemonCaught[poke])
+        {
+            pokemonObjects[poke].draw(g,frame%pokemonObjects[poke].getFrames(),400,300);
+        }
+        else if(poke < 7)
+        {
+            poke++;
+        }
+        else
+        {
+            winScreen.draw(g, 0);
+        }
+
         if(g.kbhit()){
             key = g.getKey();
             switch(key){
@@ -140,9 +156,18 @@ int main(int argc, char *argv[])
             }
         }
 
+        if(caught >= 0)
+        {
+            pokemonCaught[caught] = true;
+            numCaught++;
+            g.Sleep(200);
+        }
+
+        caught = -1;
+
         cursor.draw(g,cursor.getLoc().y, cursor.getLoc().x);
         g.update();
-    	g.Sleep(100);
+    	g.Sleep(50);
     	//pokemonObjects[1].erase(g,city,frame%city.getFrames(),bat);
     	//g.update();
     	//g.Sleep(100);
@@ -154,6 +179,8 @@ int main(int argc, char *argv[])
     	}
     }
     if(gameOver){
+        cout << numCaught << endl;
+
         endScreen.draw(g,0);
         g.update();
         for(int i = 0; i < booth.getFrames(); i++){
