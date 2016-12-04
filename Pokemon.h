@@ -36,7 +36,7 @@ class Pokemon{
     void draw(SDL_Plotter& g, int frame, int x, int y);
     void erase(SDL_Plotter& g, Background bk, int frame, Battery bat);
     int getFrames();
-    void getLocation(int& x, int& y);
+    void getLocation(int& x, int& y, int& width, int& height);
 
 };
 

@@ -63,8 +63,10 @@ int Pokemon::getFrames(){
     return frames;
 }
 
-void Pokemon::getLocation(int& x, int& y){
+void Pokemon::getLocation(int& x, int& y, int& width, int& height){
     x = curX;
     y = curY;
+    width = dem2;
+    height = dem1;
     return;
 }
