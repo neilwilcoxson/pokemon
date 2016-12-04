@@ -17,6 +17,7 @@ void Pokeball::generate(string filename){
             }
         }
         getline(file, line);
+        cout << frames << endl;
     }
     file.close();
     return;
@@ -29,9 +30,9 @@ void Pokeball::draw(SDL_Plotter& g, int frame, int x, int y){
         for(int colD = 0; colD < dem2 && x + colD < g.getCol(); colD++ ){
 
             //This is to ensure we don't print the white background
-            if(!(graphic[frame][rowD][colD].R >= 236 &&
-                 graphic[frame][rowD][colD].G >= 243 &&
-                 graphic[frame][rowD][colD].B >= 250)){
+            if(!(graphic[frame][rowD][colD].R == 236 &&
+                 graphic[frame][rowD][colD].G == 243 &&
+                 graphic[frame][rowD][colD].B == 250)){
 
                     g.plotPixel( x + colD, y + rowD, graphic[frame][rowD][colD].R,
                        graphic[frame][rowD][colD].G, graphic[frame][rowD][colD].B);

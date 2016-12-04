@@ -25,7 +25,7 @@ const string BKG_IMG_NAME = "bkrd";
 int main(int argc, char *argv[])
 {
 	//Hide the console window (Windows only)
-	FreeConsole();
+	//FreeConsole();
 	//Primary display plotter is created
 	SDL_Plotter g(WIN_RES_ROWS,WIN_RES_COLS);
 
@@ -85,6 +85,7 @@ int main(int argc, char *argv[])
 	//Makes a pokeball object
 	Pokeball pokeball;
 	pokeball.generate("Pokeball");
+
 	//Pause on loading screen if short to prevent flashing
 	if(time(0) - startTime < 2){
 		g.Sleep(1000);
@@ -132,7 +133,8 @@ int main(int argc, char *argv[])
                                 break;
                 case RIGHT_ARROW: cursor.move(RIGHT, g);
                                 break;
-                case ' ': pokeball.pokeballThrow(g, city, 0, bat, 479, 320, cursor.loc.x, cursor.loc.y, pokemonObjects, NUM_POKEMON);
+                //case ' ': pokeball.pokeballThrow(g, city, 1, bat, 479, 320, cursor.loc.x, cursor.loc.y, pokemonObjects, NUM_POKEMON);
+                                //break;
             }
         }
         cursor.draw(g,cursor.getLoc().y, cursor.getLoc().x);
