@@ -38,8 +38,8 @@ void Pokemon::draw(SDL_Plotter& g, int fr, int x, int y){
         for(int colD = 0; colD < dem2 && x + colD < g.getCol(); colD++ ){
 
             //This is to ensure we don't print the white background
-            if(!(graphic[frame][rowD][colD].R >= 245 ||
-                 graphic[frame][rowD][colD].G >= 245 ||
+            if(!(graphic[frame][rowD][colD].R >= 245 &&
+                 graphic[frame][rowD][colD].G >= 245 &&
                  graphic[frame][rowD][colD].B >= 245)){
 
                     g.plotPixel( x + colD, y + rowD, graphic[frame][rowD][colD].R,
