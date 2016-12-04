@@ -133,7 +133,7 @@ int main(int argc, char *argv[])
                                 break;
                 case RIGHT_ARROW: cursor.move(RIGHT, g);
                                 break;
-                //case ' ': pokeball.pokeballThrow(g, city, 1, bat, 479, 320, cursor.loc.x, cursor.loc.y, pokemonObjects, NUM_POKEMON);
+                case ' ': pokeball.pokeballThrow(g, city, frame%pokeball.getFrames(), bat, 320, 459, cursor.loc.x, cursor.loc.y, pokemonObjects, NUM_POKEMON);
                                 //break;
             }
         }

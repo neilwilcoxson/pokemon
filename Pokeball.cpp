@@ -30,8 +30,8 @@ void Pokeball::draw(SDL_Plotter& g, int frame, int x, int y){
         for(int colD = 0; colD < dem2 && x + colD < g.getCol(); colD++ ){
 
             //This is to ensure we don't print the white background
-            if(!(graphic[frame][rowD][colD].R == 236 &&
-                 graphic[frame][rowD][colD].G == 243 &&
+            if(!(graphic[frame][rowD][colD].R == 236 ||
+                 graphic[frame][rowD][colD].G == 243 ||
                  graphic[frame][rowD][colD].B == 250)){
 
                     g.plotPixel( x + colD, y + rowD, graphic[frame][rowD][colD].R,
@@ -39,18 +39,20 @@ void Pokeball::draw(SDL_Plotter& g, int frame, int x, int y){
             }
         }
     }
+    g.update();
     return;
 }
 
 void Pokeball::erase(SDL_Plotter& g, Background bk, int frame, Battery bat){
-    for(int y = curY; y < dem1 && curY + y < g.getRow(); y++){
-        for(int x = curX; x < dem2 && curX + x < g.getRow(); x++){
-            g.plotPixel(x, y, bk.getColor(frame,y,x).R,
-                              bk.getColor(frame,y,x).G,
-                              bk.getColor(frame,y,x).B);
+    Pixel value;
+    for(int y = curY; y < dem1 + curY /*&& curY + y < g.getRow() */; y++){
+        for(int x = curX; x < dem2 + curX /*&& curX + x < g.getRow()*/; x++){
+            value = bk.getColor(0, y, x);
+            g.plotPixel(x, y, value.R, value.G, value.B);
         }
     }
     drawOverlays(g,bat);
+
     return;
 }
 
@@ -63,33 +65,54 @@ int Pokeball::pokeballThrow(SDL_Plotter& g, Background bk, int frame, Battery ba
 
     int pokeRow, pokeCol, pokeX, pokeY;
 
-    while(x != goX && y != goY)
+    curX = x;
+    curY = y;
+
+    while(curX != goX || curY != goY)
     {
-        if(x > goX)
+        if(curX > goX)
         {
             difX = -1;
         }
-        else
+        else if(curX < goX)
         {
             difX = 1;
         }
+        else
+        {
+            difX = 0;
+        }
 
-        if(y > goX)
+        if(curY > goY)
         {
             difY = -1;
         }
-        else
+        else if(curY < goY)
         {
             difY = 1;
+        }
+        else
+        {
+            difY = 0;
         }
 
         erase(g, bk, frame, bat);
 
-        x += difX;
-        y += difY;
+        curX += difX;
+        curY += difY;
 
-        draw(g, frame, x, y);
+        draw(g, frame, curX, curY);
 
+
+
+        if(frame < getFrames() - 1)
+        {
+            frame++;
+        }
+        else
+        {
+            frame = 0;
+        }
     }
 
     for(int c = 0; c < length; c++)
