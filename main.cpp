@@ -16,7 +16,7 @@ const int WIN_RES_ROWS = 480;
 const int WIN_RES_COLS = 640;
 
 //Number of Pokemon
-const int NUM_POKEMON = 9;
+const int NUM_POKEMON = 8;
 
 //Name of background input file
 const string BKG_IMG_NAME = "bkrd";
@@ -40,8 +40,10 @@ int main(int argc, char *argv[])
 
 	//Array of Pokemon Names
 	string pokemonNames[15] = {"Charmeleon","Diglet","Jigglypuff","Meowth",
-                                "Noctowl","Pikachu","Topegi","Totodile","Booth"};
+                                "Noctowl","Pikachu","Topegi","Totodile"};
     Pokemon pokemonObjects[15];
+    bool pokemonCaught[15] = {false,false,false,false,false,false,
+                                false,false,false,false,false,false,false};
 
     //Load Background for Start Screen
     Background startScreen;
@@ -63,6 +65,10 @@ int main(int argc, char *argv[])
     for(int i = 0; i < NUM_POKEMON; i++){
         pokemonObjects[i].generate(pokemonNames[i].c_str());
     }
+
+    //Generate Booth "Pokemon"
+    Pokemon booth;
+    booth.generate("Thought_Bubble");
 
     //Create battery
 	Battery bat;
@@ -102,7 +108,7 @@ int main(int argc, char *argv[])
 		g.Sleep(5);
 	}
 
-	bat.setBatteryLife(60);
+	bat.setBatteryLife(5);
 
 	int row, col;
 	char key;
@@ -112,7 +118,7 @@ int main(int argc, char *argv[])
         city.draw(g,0);
         cursor.draw(g,cursor.getLoc().y, cursor.getLoc().x);
         bat.displayMeter(g,5,5);
-        pokemonObjects[8].draw(g,frame%pokemonObjects[8].getFrames(),400,300);
+        pokemonObjects[1].draw(g,frame%pokemonObjects[1].getFrames(),400,300);
         g.update();
     	g.Sleep(100);
     		if(g.kbhit()){
@@ -138,11 +144,19 @@ int main(int argc, char *argv[])
     		gameOver = true;
     	}
     }
-    while(!g.getQuit()){
+    if(gameOver){
         endScreen.draw(g,0);
         g.update();
-        if(g.kbhit()){
-            key = g.getKey();
+        for(int i = 0; i < booth.getFrames(); i++){
+            booth.erase(g,endScreen,0,bat);
+            booth.draw(g,i,150,300);
+            g.update();
+            g.Sleep(100);
+        }
+        while(!g.getQuit()){
+            if(g.kbhit()){
+                key = g.getKey();
+            }
         }
     }
 
