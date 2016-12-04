@@ -1,4 +1,5 @@
 #include "Pokeball.h"
+#include "Pokemon.h"
 
 void Pokeball::generate(string filename){
     ifstream file;
@@ -52,12 +53,14 @@ void Pokeball::erase(SDL_Plotter& g, Background bk, int frame, Battery bat){
     return;
 }
 
-bool Pokeball::pokeballThrow(SDL_Plotter& g, Background bk, int frame, Battery bat, int x, int y, int goX, int goY)
+int Pokeball::pokeballThrow(SDL_Plotter& g, Background bk, int frame, Battery bat, int x, int y, int goX, int goY, Pokemon a[], int length)
 {
-    bool caught = false;
+    int caught = -1;
 
     int difX = 1;
     int difY = 1;
+
+    int pokeRow, pokeCol, pokeX, pokeY;
 
     while(x != goX && y != goY)
     {
@@ -87,12 +90,26 @@ bool Pokeball::pokeballThrow(SDL_Plotter& g, Background bk, int frame, Battery b
         draw(g, frame, x, y);
 
     }
-    /*
-     *if(x - 100 <= pokemon.x && y - 100 <= pokemon.y)
-     *{
-     *    caught = true;
-     *}
-     */
+
+    for(int c = 0; c < length; c++)
+    {
+        a[c].getLocation(pokeX, pokeY, pokeCol, pokeRow);
+
+        for(int i = 0; i < 25; i++)
+        {
+            if(pokeX + pokeCol/2 == x + i)
+            {
+                for(int j = 0; j < 20; j++)
+                {
+                    if(pokeY + pokeRow/2 == y + i)
+                    {
+                        caught = c;
+                    }
+                }
+            }
+        }
+    }
+
     return caught;
 }
 

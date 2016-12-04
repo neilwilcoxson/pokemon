@@ -16,15 +16,12 @@
 #include "Background.h"
 #include "BatteryMeter.h"
 #include "Overlays.h"
+#include "Pokemon.h"
 #include <string>
 #include <vector>
 #include <fstream>
 
 using namespace std;
-
-struct Pixels{
-    int R,G,B;
-};
 
 class Pokeball{
     private:
@@ -38,7 +35,7 @@ class Pokeball{
     void generate(string);
     void draw(SDL_Plotter& g, int frame, int x, int y);
     void erase(SDL_Plotter& g, Background bk, int frame, Battery bat);
-    bool pokeballThrow(SDL_Plotter& g, Background bk, int frame, Battery bat, int x, int y, int goX, int goY);
+    int pokeballThrow(SDL_Plotter& g, Background bk, int frame, Battery bat, int x, int y, int goX, int goY, Pokemon a[], int length);
     int getFrames();
 
 };
