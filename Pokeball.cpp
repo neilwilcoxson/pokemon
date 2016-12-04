@@ -44,8 +44,8 @@ void Pokeball::draw(SDL_Plotter& g, int frame, int x, int y){
 
 void Pokeball::erase(SDL_Plotter& g, Background bk, int frame, Battery bat){
     Pixel value;
-    for(int y = curY; y < dem1 + curY /*&& curY + y < g.getRow() */; y++){
-        for(int x = curX; x < dem2 + curX /*&& curX + x < g.getRow()*/; x++){
+    for(int y = curY; y < dem1 + curY && curY + dem1 < g.getRow(); y++){
+        for(int x = curX; x < dem2 + curX && curX + dem2 < g.getRow(); x++){
             value = bk.getColor(0, y, x);
             g.plotPixel(x, y, value.R, value.G, value.B);
         }

@@ -36,6 +36,11 @@
 		<Unit filename="Background.h" />
 		<Unit filename="BatteryMeter.cpp" />
 		<Unit filename="BatteryMeter.h" />
+		<Unit filename="Circle.cpp" />
+		<Unit filename="Circle.h" />
+		<Unit filename="Overlays.cpp" />
+		<Unit filename="Overlays.h" />
+		<Unit filename="Pokeball" />
 		<Unit filename="Pokeball.cpp" />
 		<Unit filename="Pokeball.h" />
 		<Unit filename="Pokemon.cpp" />

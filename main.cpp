@@ -140,8 +140,6 @@ int main(int argc, char *argv[])
             }
         }
 
-        cout << caught << endl;
-
         cursor.draw(g,cursor.getLoc().y, cursor.getLoc().x);
         g.update();
     	g.Sleep(100);
