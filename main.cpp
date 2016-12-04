@@ -76,9 +76,9 @@ int main(int argc, char *argv[])
 	Battery bat;
 	bool gameOver = false;
 
-	//Create win screen
-	Background winScreen;
-	winScreen.generate("winscreen");
+	//Create caught screen
+	Background caughtScreen;
+	caughtScreen.generate("CaughtPokemon");
 
 	//Create end screen
 	Background endScreen;
@@ -118,7 +118,7 @@ int main(int argc, char *argv[])
 		g.Sleep(5);
 	}
 
-	bat.setBatteryLife(60);
+	bat.setBatteryLife(5);
 
 	int row, col;
 	char key;
@@ -133,11 +133,12 @@ int main(int argc, char *argv[])
         }
         else if(poke < 7)
         {
+            pokemonCaught[poke] = false;
             poke++;
         }
         else
         {
-            winScreen.draw(g, 0);
+            poke = 0;
         }
 
         if(g.kbhit()){
@@ -179,7 +180,12 @@ int main(int argc, char *argv[])
     	}
     }
     if(gameOver){
-        cout << numCaught << endl;
+        caughtScreen.draw(g, 0);
+
+
+        g.update();
+
+        g.Sleep(4000);
 
         endScreen.draw(g,0);
         g.update();
