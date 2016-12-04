@@ -1,11 +1,12 @@
-//
-//  Pokemon.cpp
-//  SDL2
-//
-//  Created by Natalie Glen on 11/21/16.
-//  Copyright © 2016 Natalie Glen. All rights reserved.
-//
 
+/*
+ * Author: Natalie Glen
+ * Assignment Title: PokemonGo (Group Project)
+ * Assignment Description: A simple game inspired by the popular mobile game
+ * Due Date: 12/5/2016
+ * Date Created: 11/18/2016
+ * Date Last Modified: 12/2/2016
+ */
 #include "Pokemon.h"
 void Pokemon::generate(string filename){
     ifstream file;
@@ -61,12 +62,4 @@ void Pokemon::erase(SDL_Plotter& g, Background bk, int frame, Battery bat){
 
 int Pokemon::getFrames(){
     return frames;
-}
-
-void Pokemon::getLocation(int& x, int& y, int& width, int& height){
-    x = curX;
-    y = curY;
-    width = dem2;
-    height = dem1;
-    return;
 }
