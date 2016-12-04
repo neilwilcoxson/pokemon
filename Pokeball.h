@@ -13,27 +13,34 @@
 #define POKEBALL_H_INCLUDED
 
 #include "SDL_Plotter.h"
+#include "Background.h"
+#include "BatteryMeter.h"
+#include "Overlays.h"
 #include <string>
 #include <vector>
 #include <fstream>
 
-struct Pixels
-{
+using namespace std;
+
+struct Pixels{
     int R,G,B;
 };
 
-class Pokeball
-{
+class Pokeball{
     private:
-        vector<vector<vector<Pixels> > >graphic;
-        int dem1, dem2;
-        string line;
-        int frameD, colD, rowD;
+    vector<vector<vector<Pixels> > >graphic;
+    int dem1, dem2;
+    string line;
+    int frames;
+    int curX, curY;
 
     public:
-        void generate(string, int);
-        void draw(SDL_Plotter& g, int frame, int x, int y);
-        bool drawThrow(SDL_Plotter& g, int frame, int x, int y, int goX, int goY);
+    void generate(string);
+    void draw(SDL_Plotter& g, int frame, int x, int y);
+    void erase(SDL_Plotter& g, Background bk, int frame, Battery bat);
+    bool pokeballThrow(SDL_Plotter& g, Background bk, int frame, Battery bat, int x, int y, int goX, int goY);
+    int getFrames();
+
 };
 
 #endif // POKEBALL_H_INCLUDED
