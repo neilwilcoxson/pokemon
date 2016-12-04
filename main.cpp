@@ -108,7 +108,7 @@ int main(int argc, char *argv[])
 		g.Sleep(5);
 	}
 
-	bat.setBatteryLife(5);
+	bat.setBatteryLife(60);
 
 	int row, col;
 	char key;
@@ -116,24 +116,24 @@ int main(int argc, char *argv[])
     //Keep window open until quit state is reached (ESC)
     while (!g.getQuit() && !gameOver){
         city.draw(g,0);
-        cursor.draw(g,cursor.getLoc().y, cursor.getLoc().x);
         bat.displayMeter(g,5,5);
         pokemonObjects[1].draw(g,frame%pokemonObjects[1].getFrames(),400,300);
+        if(g.kbhit()){
+            key = g.getKey();
+            switch(key){
+                case UP_ARROW: cursor.move(UP, g);
+                                break;
+                case DOWN_ARROW: cursor.move(DOWN, g);
+                                break;
+                case LEFT_ARROW: cursor.move(LEFT, g);
+                                break;
+                case RIGHT_ARROW: cursor.move(RIGHT, g);
+                                break;
+            }
+        }
+        cursor.draw(g,cursor.getLoc().y, cursor.getLoc().x);
         g.update();
     	g.Sleep(100);
-    		if(g.kbhit()){
-    	    	key = g.getKey();
-    	    	switch(key){
-                    case UP_ARROW: cursor.move(UP, g);
-                                    break;
-                    case DOWN_ARROW: cursor.move(DOWN, g);
-                                    break;
-                    case LEFT_ARROW: cursor.move(LEFT, g);
-                                    break;
-                    case RIGHT_ARROW: cursor.move(RIGHT, g);
-                                    break;
-    	    	}
-    		}
     	//pokemonObjects[1].erase(g,city,frame%city.getFrames(),bat);
     	//g.update();
     	//g.Sleep(100);

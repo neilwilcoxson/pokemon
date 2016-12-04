@@ -30,8 +30,10 @@ void Circle::generate(string fileName){
 void Circle::draw(SDL_Plotter& g, int row, int col){
     rowPos = row;
     colPos = col;
-    for(int rowD = 0; rowD < height && row + rowD < g.getRow(); rowD++ ){
-        for(int colD = 0; colD < width && col + colD < g.getCol(); colD++ ){
+    for(int rowD = 0; rowD < height && row + rowD < g.getRow()
+        && row > 0; rowD++ ){
+        for(int colD = 0; colD < width && col + colD < g.getCol()
+            && col > 0; colD++ ){
 
             //This is to ensure we don't print the white background
             if(!(circle[rowD][colD].R >= 254 &&
@@ -50,13 +52,25 @@ void Circle::draw(SDL_Plotter& g, int row, int col){
 void Circle::move(direction dir, SDL_Plotter& g){
     oldLoc = loc;
     switch(dir){
-        case UP: loc.y -= 10;
+        case UP: loc.y -= 20;
+                 if(loc.y < 1){
+                    loc.y = 1;
+                 }
                  break;
-        case DOWN: loc.y += 10;
+        case DOWN: loc.y += 20;
+                 if(loc.y > g.getRow()-25){
+                    loc.y = g.getRow()-25;
+                 }
                  break;
-        case LEFT: loc.x -= 10;
+        case LEFT: loc.x -= 20;
+                 if(loc.x < 1){
+                    loc.x = 1;
+                 }
                  break;
-        case RIGHT: loc.x += 10;
+        case RIGHT: loc.x += 20;
+                 if(loc.x > g.getCol()-25){
+                    loc.x = g.getCol()-25;
+                 }
                  break;
     }
 }
