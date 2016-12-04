@@ -60,6 +60,14 @@ void Pokemon::erase(SDL_Plotter& g, Background bk, int frame, Battery bat){
     return;
 }
 
+void Pokemon::getLocation(int& x, int& y, int& width, int& height){
+    x = curX;
+    y = curY;
+    width = dem2;
+    height = dem1;
+    return;
+}
+
 int Pokemon::getFrames(){
     return frames;
 }

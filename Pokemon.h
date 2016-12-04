@@ -52,6 +52,8 @@ class Pokemon{
     //                                                           *
     //************************************************************
     void erase(SDL_Plotter& g, Background bk, int frame, Battery bat);
+
+    void getLocation(int& x, int& y, int& width, int& height);
     //************************************************************
     // description: gets the number of frames from each pokemon  *
     //              sprite file                                  *
