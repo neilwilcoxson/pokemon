@@ -30,10 +30,12 @@ class Circle{
 		Point loc, oldLoc, center;
 		vector<vector<Pixel> >circle;
 	public:
+	    Circle();
 	    void generate(string fileName);
 		void draw(SDL_Plotter& g, int row, int col);
 		void move(direction dir, SDL_Plotter&);
 		void getPosition(int& row, int& col);
+		Point getLoc();
 };
 
 

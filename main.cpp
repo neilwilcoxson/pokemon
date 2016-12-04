@@ -68,6 +68,10 @@ int main(int argc, char *argv[])
 	Battery bat;
 	bool gameOver = false;
 
+	//Create end screen
+	Background endScreen;
+	endScreen.generate("PokemonGameOverScreen");
+
 	//Counter variable for current frame of game play
 	//Use %(number of frames in file) to select frame of each object
 	long long int frame = 0;
@@ -103,30 +107,27 @@ int main(int argc, char *argv[])
 	int row, col;
 	char key;
 
-	row = 182;
-	col = 262;
-
     //Keep window open until quit state is reached (ESC)
     while (!g.getQuit() && !gameOver){
         city.draw(g,0);
-        cursor.draw(g,row, col);
+        cursor.draw(g,cursor.getLoc().y, cursor.getLoc().x);
         bat.displayMeter(g,5,5);
         pokemonObjects[8].draw(g,frame%pokemonObjects[8].getFrames(),400,300);
-    		//if(g.kbhit()){
-    	    	//key = g.getKey();
-    	    	//switch(key){
-                  //  case UP_ARROW: cursor.move(UP, g);
-                                   break;
-                    //case DOWN_ARROW: cursor.move(DOWN, g);
-                                     break;
-                    //case LEFT_ARROW: cursor.move(LEFT, g);
-                                   break;
-                    //case RIGHT_ARROW: cursor.move(RIGHT, g);
-                                     break;
-    	    //	}
-    		//}
-    	g.update();
+        g.update();
     	g.Sleep(100);
+    		if(g.kbhit()){
+    	    	key = g.getKey();
+    	    	switch(key){
+                    case UP_ARROW: cursor.move(UP, g);
+                                    break;
+                    case DOWN_ARROW: cursor.move(DOWN, g);
+                                    break;
+                    case LEFT_ARROW: cursor.move(LEFT, g);
+                                    break;
+                    case RIGHT_ARROW: cursor.move(RIGHT, g);
+                                    break;
+    	    	}
+    		}
     	//pokemonObjects[1].erase(g,city,frame%city.getFrames(),bat);
     	//g.update();
     	//g.Sleep(100);
@@ -137,5 +138,13 @@ int main(int argc, char *argv[])
     		gameOver = true;
     	}
     }
+    while(!g.getQuit()){
+        endScreen.draw(g,0);
+        g.update();
+        if(g.kbhit()){
+            key = g.getKey();
+        }
+    }
+
     return 0;
 }

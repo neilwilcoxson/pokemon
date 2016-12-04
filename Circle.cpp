@@ -9,6 +9,11 @@
 
 #include "Circle.h"
 
+Circle::Circle(){
+    loc.y = 182;
+    loc.x = 262;
+}
+
 void Circle::generate(string fileName){
     ifstream file(fileName.c_str());
     file >> frames >> height >> width;
@@ -51,10 +56,9 @@ void Circle::move(direction dir, SDL_Plotter& g){
                  break;
         case LEFT: loc.x -= 10;
                  break;
-        case RIGHT: loc.y += 10;
+        case RIGHT: loc.x += 10;
                  break;
     }
-    draw(g, loc.x, loc.y);
 }
 
 void Circle::getPosition(int& row, int& col){
@@ -62,4 +66,8 @@ void Circle::getPosition(int& row, int& col){
     col = colPos;
 
     return;
+}
+
+Point Circle::getLoc(){
+    return loc;
 }
