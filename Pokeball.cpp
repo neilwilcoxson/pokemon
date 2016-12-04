@@ -55,7 +55,7 @@ void Pokeball::erase(SDL_Plotter& g, Background bk, int frame, Battery bat){
 
 int Pokeball::pokeballThrow(SDL_Plotter& g, Background bk, int frame, Battery bat, int x, int y, int goX, int goY, Pokemon a[], int length)
 {
-    int caught = -1;
+    int caught = false;
 
     int difX = 1;
     int difY = 1;

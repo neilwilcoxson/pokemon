@@ -5,6 +5,7 @@
 #include "BatteryMeter.h"
 #include "Pokemon.h"
 #include "Overlays.h"
+#include "Pokeball.h"
 #include <ctime>
 #include <windows.h>
 
@@ -39,11 +40,10 @@ int main(int argc, char *argv[])
 	g.update();
 
 	//Array of Pokemon Names
-	string pokemonNames[15] = {"Charmeleon","Diglet","Jigglypuff","Meowth",
+	string pokemonNames[8] = {"Charmeleon","Diglet","Jigglypuff","Meowth",
                                 "Noctowl","Pikachu","Topegi","Totodile"};
-    Pokemon pokemonObjects[15];
-    bool pokemonCaught[15] = {false,false,false,false,false,false,
-                                false,false,false,false,false,false,false};
+    Pokemon pokemonObjects[8];
+    bool pokemonCaught[8] = {false,false,false,false,false,false,false,false};
 
     //Load Background for Start Screen
     Background startScreen;
@@ -82,6 +82,9 @@ int main(int argc, char *argv[])
 	//Use %(number of frames in file) to select frame of each object
 	long long int frame = 0;
 
+	//Makes a pokeball object
+	Pokeball pokeball;
+	pokeball.generate("Pokeball");
 	//Pause on loading screen if short to prevent flashing
 	if(time(0) - startTime < 2){
 		g.Sleep(1000);
@@ -129,6 +132,7 @@ int main(int argc, char *argv[])
                                 break;
                 case RIGHT_ARROW: cursor.move(RIGHT, g);
                                 break;
+                case ' ': pokeball.pokeballThrow(g, city, 0, bat, 479, 320, cursor.loc.x, cursor.loc.y, pokemonObjects, NUM_POKEMON);
             }
         }
         cursor.draw(g,cursor.getLoc().y, cursor.getLoc().x);

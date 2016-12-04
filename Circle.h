@@ -26,11 +26,12 @@ enum direction {UP,DOWN,LEFT,RIGHT};
 
 class Circle{
 	private:
-		int rowPos, colPos, height, width, frames, locx, locy;
-		Point loc, oldLoc, center;
+		int rowPos, colPos, height, width, frames;
+		Point oldLoc, center;
 		vector<vector<Pixel> >circle;
 	public:
 	    Circle();
+	    Point loc;
 	    void generate(string fileName);
 		void draw(SDL_Plotter& g, int row, int col);
 		void move(direction dir, SDL_Plotter&);
