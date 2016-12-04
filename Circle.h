@@ -13,22 +13,26 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include "SDL_Plotter.h"
+#include "Background.h"
 
 using namespace std;
 
-struct Pixel{
-    int R,G,B;
+struct Point{
+    int x, y;
 };
 
 enum direction {UP,DOWN,LEFT,RIGHT};
 
 class Circle{
 	private:
-		int rowPos, colPos, height, width;
+		int rowPos, colPos, height, width, frames, locx, locy;
+		Point loc, oldLoc, center;
+		vector<vector<Pixel> >circle;
 	public:
 	    void generate(string fileName);
-		void draw(int row, int col);
-		void move(direction dir);
+		void draw(SDL_Plotter& g, int row, int col);
+		void move(direction dir, SDL_Plotter&);
 		void getPosition(int& row, int& col);
 };
 

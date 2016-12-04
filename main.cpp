@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>			//strings in filename, etc.
 #include "Background.h"		//Background initialization and drawing
+#include "Circle.h"
 #include "BatteryMeter.h"
 #include "Pokemon.h"
 #include "Overlays.h"
@@ -15,7 +16,7 @@ const int WIN_RES_ROWS = 480;
 const int WIN_RES_COLS = 640;
 
 //Number of Pokemon
-const int NUM_POKEMON = 8;
+const int NUM_POKEMON = 9;
 
 //Name of background input file
 const string BKG_IMG_NAME = "bkrd";
@@ -39,7 +40,7 @@ int main(int argc, char *argv[])
 
 	//Array of Pokemon Names
 	string pokemonNames[15] = {"Charmeleon","Diglet","Jigglypuff","Meowth",
-                                "Noctowl","Pikachu","Topegi","Totodile"};
+                                "Noctowl","Pikachu","Topegi","Totodile","Booth"};
     Pokemon pokemonObjects[15];
 
     //Load Background for Start Screen
@@ -53,6 +54,10 @@ int main(int argc, char *argv[])
 	//Background object for main level is created
 	Background city;
 	city.generate(BKG_IMG_NAME);
+
+	//Circle cursor object is created
+	Circle cursor;
+	cursor.generate("Circle");
 
     //Create Pokemon Objects and generate vectors
     for(int i = 0; i < NUM_POKEMON; i++){
@@ -95,15 +100,32 @@ int main(int argc, char *argv[])
 
 	bat.setBatteryLife(60);
 
+	int row, col;
+	char key;
+
+	row = 182;
+	col = 262;
+
     //Keep window open until quit state is reached (ESC)
     while (!g.getQuit() && !gameOver){
-    	city.draw(g,0);
+        city.draw(g,0);
+        cursor.draw(g,row, col);
         bat.displayMeter(g,5,5);
-        pokemonObjects[1].draw(g,frame%pokemonObjects[1].getFrames(),400,300);
+        pokemonObjects[8].draw(g,frame%pokemonObjects[8].getFrames(),400,300);
+    		//if(g.kbhit()){
+    	    	//key = g.getKey();
+    	    	//switch(key){
+                  //  case UP_ARROW: cursor.move(UP, g);
+                                   break;
+                    //case DOWN_ARROW: cursor.move(DOWN, g);
+                                     break;
+                    //case LEFT_ARROW: cursor.move(LEFT, g);
+                                   break;
+                    //case RIGHT_ARROW: cursor.move(RIGHT, g);
+                                     break;
+    	    //	}
+    		//}
     	g.update();
-    		if(g.kbhit()){
-    	    	g.getKey();
-    		}
     	g.Sleep(100);
     	//pokemonObjects[1].erase(g,city,frame%city.getFrames(),bat);
     	//g.update();
