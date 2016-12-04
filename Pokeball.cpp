@@ -17,7 +17,6 @@ void Pokeball::generate(string filename){
             }
         }
         getline(file, line);
-        cout << frames << endl;
     }
     file.close();
     return;
@@ -58,7 +57,7 @@ void Pokeball::erase(SDL_Plotter& g, Background bk, int frame, Battery bat){
 
 int Pokeball::pokeballThrow(SDL_Plotter& g, Background bk, int frame, Battery bat, int x, int y, int goX, int goY, Pokemon a[], int length)
 {
-    int caught = false;
+    int caught = -1;
 
     int difX = 1;
     int difY = 1;
@@ -119,15 +118,17 @@ int Pokeball::pokeballThrow(SDL_Plotter& g, Background bk, int frame, Battery ba
     {
         a[c].getLocation(pokeX, pokeY, pokeCol, pokeRow);
 
-        for(int i = 0; i < 25; i++)
+        for(int i = 0; i < 50; i++)
         {
-            if(pokeX + pokeCol/2 == x + i)
+            if(pokeX + (pokeCol / 2) == curX + i)
             {
-                for(int j = 0; j < 20; j++)
+                for(int j = 0; j < 50; j++)
                 {
-                    if(pokeY + pokeRow/2 == y + i)
+                    if(pokeY + (pokeRow / 2) == curY + j)
                     {
                         caught = c;
+                        a[c].erase(g, bk, 0, bat);
+                        g.update();
                     }
                 }
             }

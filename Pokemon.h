@@ -21,7 +21,7 @@ class Pokemon{
     vector<vector<vector<Pixels> > >graphic;
     int dem1, dem2;
     string line;
-    int frames;
+    int frames, frame;
     int curX, curY;
 
     public:

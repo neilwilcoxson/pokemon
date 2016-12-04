@@ -29,15 +29,16 @@ void Pokemon::generate(string filename){
     return;
 }
 
-void Pokemon::draw(SDL_Plotter& g, int frame, int x, int y){
+void Pokemon::draw(SDL_Plotter& g, int fr, int x, int y){
     curX = x;
     curY = y;
+    frame = fr;
     for(int rowD = 0; rowD < dem1 && y + rowD < g.getRow(); rowD++ ){
         for(int colD = 0; colD < dem2 && x + colD < g.getCol(); colD++ ){
 
             //This is to ensure we don't print the white background
-            if(!(graphic[frame][rowD][colD].R >= 245 &&
-                 graphic[frame][rowD][colD].G >= 245 &&
+            if(!(graphic[frame][rowD][colD].R >= 245 ||
+                 graphic[frame][rowD][colD].G >= 245 ||
                  graphic[frame][rowD][colD].B >= 245)){
 
                     g.plotPixel( x + colD, y + rowD, graphic[frame][rowD][colD].R,
@@ -45,18 +46,20 @@ void Pokemon::draw(SDL_Plotter& g, int frame, int x, int y){
             }
         }
     }
+    g.update();
     return;
 }
 
 void Pokemon::erase(SDL_Plotter& g, Background bk, int frame, Battery bat){
-    for(int y = curY; y < dem1 && curY + y < g.getRow(); y++){
-        for(int x = curX; x < dem2 && curX + x < g.getRow(); x++){
-            g.plotPixel(x,y,bk.getColor(frame,y,x).R,
-                            bk.getColor(frame,y,x).G,
-                            bk.getColor(frame,y,x).B);
+    Pixel value;
+    for(int y = curY; y < dem1 + curY /*&& curY + y < g.getRow() */; y++){
+        for(int x = curX; x < dem2 + curX /*&& curX + x < g.getRow()*/; x++){
+            value = bk.getColor(0, y, x);
+            g.plotPixel(x, y, value.R, value.G, value.B);
         }
     }
     drawOverlays(g,bat);
+
     return;
 }
 

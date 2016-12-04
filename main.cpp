@@ -32,6 +32,8 @@ int main(int argc, char *argv[])
 	//Keep track of time program started
 	long int startTime = time(0);
 
+	int caught;
+
 	Background loading;
 	loading.generate("loading");
 	loading.draw(g,0);
@@ -133,10 +135,13 @@ int main(int argc, char *argv[])
                                 break;
                 case RIGHT_ARROW: cursor.move(RIGHT, g);
                                 break;
-                case ' ': pokeball.pokeballThrow(g, city, frame%pokeball.getFrames(), bat, 320, 459, cursor.loc.x, cursor.loc.y, pokemonObjects, NUM_POKEMON);
-                                //break;
+                case ' ': caught = pokeball.pokeballThrow(g, city, frame%pokeball.getFrames(), bat, 320, 459, cursor.loc.x, cursor.loc.y, pokemonObjects, NUM_POKEMON);
+                                break;
             }
         }
+
+        cout << caught << endl;
+
         cursor.draw(g,cursor.getLoc().y, cursor.getLoc().x);
         g.update();
     	g.Sleep(100);
