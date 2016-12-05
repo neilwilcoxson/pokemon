@@ -36,6 +36,7 @@
 		<Unit filename="Background.h" />
 		<Unit filename="BatteryMeter.cpp" />
 		<Unit filename="BatteryMeter.h" />
+		<Unit filename="CaughtPokemon" />
 		<Unit filename="Circle.cpp" />
 		<Unit filename="Circle.h" />
 		<Unit filename="Overlays.cpp" />
@@ -49,6 +50,7 @@
 		<Unit filename="Score.cpp" />
 		<Unit filename="Score.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="winscreen" />
 		<Extensions>
 			<code_completion />
 			<envvars />
