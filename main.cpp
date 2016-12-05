@@ -26,7 +26,8 @@ const string BKG_IMG_NAME = "bkrd";
 int main(int argc, char *argv[])
 {
 	//Hide the console window (Windows only)
-	//FreeConsole();
+	FreeConsole();
+
 	//Primary display plotter is created
 	SDL_Plotter g(WIN_RES_ROWS,WIN_RES_COLS);
 
