@@ -120,13 +120,13 @@ int Pokeball::pokeballThrow(SDL_Plotter& g, Background bk, int frame,
     {
         a[c].getLocation(pokeX, pokeY, pokeCol, pokeRow);
 
-        for(int i = 0; i < 100; i++)
+        for(int i = 0; i < 70; i++)
         {
-            if(pokeX + (pokeCol / 2) == curX + i || pokeX + (pokeCol / 2) == curX - i)
+            if(pokeX == curX + (dem1 / 2) - i)
             {
-                for(int j = 0; j < 100; j++)
+                for(int j = 0; j < 70; j++)
                 {
-                    if(pokeY + (pokeRow / 2) == curY + j || pokeY + (pokeRow / 2) == curY - j)
+                    if(pokeY == curY + (dem2 / 2) - j)
                     {
                         caught = c;
                         a[c].erase(g, bk, 0, bat);

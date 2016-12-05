@@ -122,7 +122,7 @@ int main(int argc, char *argv[])
 		g.Sleep(5);
 	}
 
-	bat.setBatteryLife(35);
+	bat.setBatteryLife(30);
 
 	int row, col;
 	char key;
@@ -135,13 +135,15 @@ int main(int argc, char *argv[])
     while (!g.getQuit() && !gameOver){
         city.draw(g,0);
         bat.displayMeter(g,5,5);
+
         if(!pokemonCaught[poke])
         {
-            pokemonObjects[poke].draw(g,frame%pokemonObjects[poke].getFrames(),xrand,yrand);
+            pokemonObjects[poke].draw(g,frame%pokemonObjects[poke].getFrames(),
+                                      xrand,yrand);
         }
         else if(poke < 7)
         {
-            pokemonCaught[poke] = 0;
+            pokemonCaught[poke] = false;
             xrand = rand()%540;
             yrand = 240 + rand()%140;
             poke++;
@@ -149,6 +151,8 @@ int main(int argc, char *argv[])
         else
         {
             poke = 0;
+            xrand = rand()%540;
+            yrand = 240 + rand()%140;
         }
 
         if(g.kbhit()){
@@ -162,7 +166,12 @@ int main(int argc, char *argv[])
                                 break;
                 case RIGHT_ARROW: cursor.move(RIGHT, g);
                                 break;
-                case ' ': caught = pokeball.pokeballThrow(g, city, frame%pokeball.getFrames(), bat, 320, 459, cursor.loc.x, cursor.loc.y, pokemonObjects, NUM_POKEMON);
+                case ' ': caught = pokeball.pokeballThrow(g, city,
+                                                    frame%pokeball.getFrames(),
+                                                    bat, 320, 459,
+                                                    cursor.loc.x, cursor.loc.y,
+                                                    pokemonObjects,
+                                                    NUM_POKEMON);
                                 break;
             }
         }
