@@ -22,8 +22,29 @@ class Score
 
     public:
         Score();
+
+        /*
+         * description: sets the score based on number of pokemon caught
+         * return: void
+         * precondition: integer parameter exists
+         * postcondition: sets score equal to parameter in Score object
+         */
         void setScore(int caught);
+
+        /*
+         * description: gets the score
+         * return: int
+         * precondition: score integer exists
+         * postcondition: returns score from Score object
+         */
         int getScore();
+
+        /*
+         * description: draws the score to the plotter
+         * return: void
+         * precondition: the plotter and integer parameters exist
+         * postcondition: draws the score to the plotter
+         */
         void drawScore(SDL_Plotter& g, int x, int y);
 };
 
