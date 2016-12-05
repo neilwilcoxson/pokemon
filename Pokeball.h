@@ -38,8 +38,8 @@ class Pokeball{
          * description: draws the pokeball to the plotter
          * return: void
          * precondition: the plotter and integer parameters exist
-         * postcondition: draws the pokeball to the at the inputed frame to
-         *                plotter
+         * postcondition: draws the pokeball to the plotter at the inputed
+         *                frame
          */
         void draw(SDL_Plotter& g, int frame, int x, int y);
 

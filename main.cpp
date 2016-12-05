@@ -26,7 +26,8 @@ const string BKG_IMG_NAME = "bkrd";
 int main(int argc, char *argv[])
 {
 	//Hide the console window (Windows only)
-	//FreeConsole();
+	FreeConsole();
+
 	//Primary display plotter is created
 	SDL_Plotter g(WIN_RES_ROWS,WIN_RES_COLS);
 
@@ -202,10 +203,6 @@ int main(int argc, char *argv[])
         cursor.draw(g,cursor.getLoc().y, cursor.getLoc().x);
         g.update();
     	g.Sleep(50);
-    	//pokemonObjects[1].erase(g,city,frame%city.getFrames(),bat);
-    	//g.update();
-    	//g.Sleep(100);
-    	//Increment current frame number
     	frame++;
 
     	if(bat.getBatteryLevel() <= 0){

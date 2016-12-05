@@ -25,6 +25,7 @@ void Circle::generate(string fileName){
             file >> circle[i][j].R >>  circle[i][j].G >> circle[i][j].B;
         }
     }
+    file.close();
 }
 
 void Circle::draw(SDL_Plotter& g, int row, int col){
