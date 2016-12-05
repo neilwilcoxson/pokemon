@@ -61,6 +61,9 @@ void Pokemon::erase(SDL_Plotter& g, Background bk, int frame, Battery bat){
     }
     drawOverlays(g,bat);
 
+    curX = -100;
+    curY = -100;
+
     return;
 }
 
