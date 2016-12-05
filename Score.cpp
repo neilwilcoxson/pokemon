@@ -19,6 +19,9 @@ Score::Score()
         getline(file, line);
     }
     file.close();
+
+    score = 5;
+
     return;
 }
 
@@ -32,7 +35,25 @@ int Score::getScore()
     return score;
 }
 
-void Score::drawScore(SDL_Plotter& g, int frame, int x, int y)
+void Score::drawScore(SDL_Plotter& g, int x, int y)
 {
+    curX = x;
+    curY = y;
+    int ones = score % 10;
 
+    for(int rowD = 0; rowD < dem1 && y + rowD < g.getRow(); rowD++ ){
+        for(int colD = 0; colD < dem2 && x + colD < g.getCol(); colD++ ){
+            g.plotPixel( x + colD, y + rowD, digits[score / 10][rowD][colD].R,
+                digits[score / 10][rowD][colD].G, digits[score / 10][rowD][colD].B);
+        }
+    }
+
+    for(int rowD = 0; rowD < dem1 && y + rowD < g.getRow(); rowD++ ){
+        for(int colD = 0; colD < dem2 && x + 68 + colD < g.getCol(); colD++ ){
+            g.plotPixel( x + 68 + colD, y + rowD, digits[ones][rowD][colD].R,
+                digits[ones][rowD][colD].G, digits[ones][rowD][colD].B);
+        }
+    }
+
+    return;
 }

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1480894521 source:c:\users\westo\documents\github\pokemon\main.cpp
+1480903340 source:c:\users\westo\documents\github\pokemon\main.cpp
 	<iostream>
 	<string>
 	"Background.h"
@@ -8,6 +8,7 @@
 	"Pokemon.h"
 	"Overlays.h"
 	"Pokeball.h"
+	"Score.h"
 	<ctime>
 	<windows.h>
 
@@ -78,10 +79,10 @@
 	"SDL_Plotter.h"
 	"Background.h"
 
-1480892536 source:c:\users\westo\documents\github\pokemon\score.cpp
+1480902870 source:c:\users\westo\documents\github\pokemon\score.cpp
 	"Score.h"
 
-1480892536 c:\users\westo\documents\github\pokemon\score.h
+1480901855 c:\users\westo\documents\github\pokemon\score.h
 	"SDL_Plotter.h"
 	"Background.h"
 	"BatteryMeter.h"

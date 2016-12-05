@@ -6,6 +6,7 @@
 #include "Pokemon.h"
 #include "Overlays.h"
 #include "Pokeball.h"
+#include "Score.h"
 #include <ctime>
 #include <windows.h>
 
@@ -80,6 +81,9 @@ int main(int argc, char *argv[])
 	Background caughtScreen;
 	caughtScreen.generate("CaughtPokemon");
 
+	//Create score object
+	Score score;
+
 	//Create end screen
 	Background endScreen;
 	endScreen.generate("PokemonGameOverScreen");
@@ -118,7 +122,7 @@ int main(int argc, char *argv[])
 		g.Sleep(5);
 	}
 
-	bat.setBatteryLife(30);
+	bat.setBatteryLife(35);
 
 	int row, col;
 	char key;
@@ -188,6 +192,10 @@ int main(int argc, char *argv[])
 
     if(gameOver){
         caughtScreen.draw(g, 0);
+
+        score.setScore(numCaught);
+
+        score.drawScore(g, 260, 205);
 
         g.update();
 

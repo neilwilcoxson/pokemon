@@ -16,6 +16,7 @@ class Score
         int score;
         int frames;
         int dem1, dem2;
+        int curX, curY;
         string line;
         vector<vector<vector<Pixels > > > digits;
 
@@ -23,7 +24,7 @@ class Score
         Score();
         void setScore(int caught);
         int getScore();
-        void drawScore(SDL_Plotter& g, int frame, int x, int y);
+        void drawScore(SDL_Plotter& g, int x, int y);
 };
 
 #endif // SCORE_H_INCLUDED
