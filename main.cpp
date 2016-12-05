@@ -118,10 +118,14 @@ int main(int argc, char *argv[])
 		g.Sleep(5);
 	}
 
-	bat.setBatteryLife(5);
+	bat.setBatteryLife(30);
 
 	int row, col;
 	char key;
+
+	srand(time(0));
+	int xrand = rand()%540;
+	int yrand = 100 + rand()%340;
 
     //Keep window open until quit state is reached (ESC)
     while (!g.getQuit() && !gameOver){
@@ -129,11 +133,13 @@ int main(int argc, char *argv[])
         bat.displayMeter(g,5,5);
         if(!pokemonCaught[poke])
         {
-            pokemonObjects[poke].draw(g,frame%pokemonObjects[poke].getFrames(),400,300);
+            pokemonObjects[poke].draw(g,frame%pokemonObjects[poke].getFrames(),xrand,yrand);
         }
         else if(poke < 7)
         {
-            pokemonCaught[poke] = false;
+            pokemonCaught[poke] = 0;
+            xrand = rand()%540;
+            yrand = 240 + rand()%140;
             poke++;
         }
         else
@@ -179,9 +185,9 @@ int main(int argc, char *argv[])
     		gameOver = true;
     	}
     }
+
     if(gameOver){
         caughtScreen.draw(g, 0);
-
 
         g.update();
 

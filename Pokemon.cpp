@@ -54,7 +54,7 @@ void Pokemon::draw(SDL_Plotter& g, int fr, int x, int y){
 void Pokemon::erase(SDL_Plotter& g, Background bk, int frame, Battery bat){
     Pixel value;
     for(int y = curY; y < dem1 + curY && curY + dem1 < g.getRow(); y++){
-        for(int x = curX; x < dem2 + curX && curX + dem2 < g.getRow(); x++){
+        for(int x = curX; x < dem2 + curX && curX + dem2 < g.getCol(); x++){
             value = bk.getColor(0, y, x);
             g.plotPixel(x, y, value.R, value.G, value.B);
         }

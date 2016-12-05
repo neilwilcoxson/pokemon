@@ -45,7 +45,7 @@ void Pokeball::draw(SDL_Plotter& g, int frame, int x, int y){
 void Pokeball::erase(SDL_Plotter& g, Background bk, int frame, Battery bat){
     Pixel value;
     for(int y = curY; y < dem1 + curY && curY + dem1 < g.getRow(); y++){
-        for(int x = curX; x < dem2 + curX && curX + dem2 < g.getRow(); x++){
+        for(int x = curX; x < dem2 + curX && curX + dem2 < g.getCol(); x++){
             value = bk.getColor(0, y, x);
             g.plotPixel(x, y, value.R, value.G, value.B);
         }
@@ -55,7 +55,9 @@ void Pokeball::erase(SDL_Plotter& g, Background bk, int frame, Battery bat){
     return;
 }
 
-int Pokeball::pokeballThrow(SDL_Plotter& g, Background bk, int frame, Battery bat, int x, int y, int goX, int goY, Pokemon a[], int length)
+int Pokeball::pokeballThrow(SDL_Plotter& g, Background bk, int frame,
+                            Battery bat, int x, int y, int goX, int goY,
+                            Pokemon a[], int length)
 {
     int caught = -1;
 
@@ -118,13 +120,13 @@ int Pokeball::pokeballThrow(SDL_Plotter& g, Background bk, int frame, Battery ba
     {
         a[c].getLocation(pokeX, pokeY, pokeCol, pokeRow);
 
-        for(int i = 0; i < 50; i++)
+        for(int i = 0; i < 100; i++)
         {
-            if(pokeX + (pokeCol / 2) == curX + i)
+            if(pokeX + (pokeCol / 2) == curX + i || pokeX + (pokeCol / 2) == curX - i)
             {
-                for(int j = 0; j < 50; j++)
+                for(int j = 0; j < 100; j++)
                 {
-                    if(pokeY + (pokeRow / 2) == curY + j)
+                    if(pokeY + (pokeRow / 2) == curY + j || pokeY + (pokeRow / 2) == curY - j)
                     {
                         caught = c;
                         a[c].erase(g, bk, 0, bat);
