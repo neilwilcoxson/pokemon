@@ -46,6 +46,8 @@
 		<Unit filename="Pokemon.cpp" />
 		<Unit filename="Pokemon.h" />
 		<Unit filename="SDL_Plotter.h" />
+		<Unit filename="Score.cpp" />
+		<Unit filename="Score.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

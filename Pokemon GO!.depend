@@ -92,3 +92,96 @@
 	<vector>
 	<fstream>
 
+1480908802 source:h:\pokemon-master new\pokemon-master\background.cpp
+	"Background.h"
+
+1480908802 h:\pokemon-master new\pokemon-master\background.h
+	"SDL_Plotter.h"
+	<string>
+	<fstream>
+	<vector>
+
+1480909163 h:\pokemon-master new\pokemon-master\sdl_plotter.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_mixer.h>
+	<string.h>
+	<iostream>
+	<string>
+	<string.h>
+	<map>
+
+1480908802 source:h:\pokemon-master new\pokemon-master\batterymeter.cpp
+	"BatteryMeter.h"
+
+1480908802 h:\pokemon-master new\pokemon-master\batterymeter.h
+	<ctime>
+	"SDL_Plotter.h"
+
+1480908802 source:h:\pokemon-master new\pokemon-master\circle.cpp
+	"Circle.h"
+
+1480908802 h:\pokemon-master new\pokemon-master\circle.h
+	<vector>
+	<string>
+	<fstream>
+	"SDL_Plotter.h"
+	"Background.h"
+
+1480908802 source:h:\pokemon-master new\pokemon-master\overlays.cpp
+	"Overlays.h"
+
+1480908802 h:\pokemon-master new\pokemon-master\overlays.h
+	"BatteryMeter.h"
+
+1480908802 source:h:\pokemon-master new\pokemon-master\pokeball.cpp
+	"Pokeball.h"
+	"Pokemon.h"
+
+1480908802 h:\pokemon-master new\pokemon-master\pokeball.h
+	"SDL_Plotter.h"
+	"Background.h"
+	"BatteryMeter.h"
+	"Overlays.h"
+	"Pokemon.h"
+	<string>
+	<vector>
+	<fstream>
+
+1480908803 h:\pokemon-master new\pokemon-master\pokemon.h
+	"SDL_Plotter.h"
+	"Background.h"
+	"BatteryMeter.h"
+	"Overlays.h"
+	<string>
+	<vector>
+	<fstream>
+
+1480908803 source:h:\pokemon-master new\pokemon-master\pokemon.cpp
+	"Pokemon.h"
+
+1480910787 source:h:\pokemon-master new\pokemon-master\main.cpp
+	<iostream>
+	<string>
+	"Background.h"
+	"Circle.h"
+	"BatteryMeter.h"
+	"Pokemon.h"
+	"Overlays.h"
+	"Pokeball.h"
+	"Score.h"
+	<ctime>
+	<windows.h>
+
+1480908803 h:\pokemon-master new\pokemon-master\score.h
+	"SDL_Plotter.h"
+	"Background.h"
+	"BatteryMeter.h"
+	"Overlays.h"
+	"Pokemon.h"
+	<string>
+	<vector>
+	<fstream>
+
+1480908803 source:h:\pokemon-master new\pokemon-master\score.cpp
+	"Score.h"
+
