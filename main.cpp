@@ -30,6 +30,12 @@ int main(int argc, char *argv[])
 	//Primary display plotter is created
 	SDL_Plotter g(WIN_RES_ROWS,WIN_RES_COLS);
 
+	//initialize sounds
+	g.initSound("se_go_ball_throw.wav");
+	g.initSound("200_ME_gotcha.wav");
+    g.initSound("se_go_sys_select.wav");
+    g.initSound("catchtrue.wav");
+
 	//Keep track of time program started
 	long int startTime = time(0);
 
@@ -38,8 +44,6 @@ int main(int argc, char *argv[])
 	Background loading;
 	loading.generate("loading");
 	loading.draw(g,0);
-	//g.initSound("PokemonTheme.wav");
-	//g.playSound("PokemonTheme.wav");
 	g.update();
 
 	//Array of Pokemon Names
@@ -107,10 +111,14 @@ int main(int argc, char *argv[])
 
 	//Wait until a key is pressed
 	while(!g.kbhit()){
+        if(g.kbhit()){
+            break;
+		}
 		g.Sleep(5);
 	}
 
-	//g.quitSound("PokemonTheme.wav");
+    g.playSound("se_go_sys_select.wav");
+
 	g.update();
 
 	//Draw instructions screen
@@ -119,12 +127,16 @@ int main(int argc, char *argv[])
 
 	//Wait until a key is pressed
 	while(!g.kbhit()){
+        if(g.kbhit()){
+            break;
+		}
 		g.Sleep(5);
 	}
 
+	g.playSound("se_go_sys_select.wav");
+
 	bat.setBatteryLife(30);
 
-	int row, col;
 	char key;
 
 	srand(time(0));
@@ -166,13 +178,14 @@ int main(int argc, char *argv[])
                                 break;
                 case RIGHT_ARROW: cursor.move(RIGHT, g);
                                 break;
-                case ' ': caught = pokeball.pokeballThrow(g, city,
+                case ' ': g.playSound("se_go_ball_throw.wav");
+                          caught = pokeball.pokeballThrow(g, city,
                                                     frame%pokeball.getFrames(),
                                                     bat, 320, 459,
                                                     cursor.loc.x, cursor.loc.y,
                                                     pokemonObjects,
                                                     NUM_POKEMON);
-                                break;
+                          break;
             }
         }
 
@@ -180,7 +193,8 @@ int main(int argc, char *argv[])
         {
             pokemonCaught[caught] = true;
             numCaught++;
-            g.Sleep(200);
+            g.Sleep(300);
+            g.playSound("catchtrue.wav");
         }
 
         caught = -1;
@@ -205,6 +219,7 @@ int main(int argc, char *argv[])
         score.setScore(numCaught);
 
         score.drawScore(g, 260, 205);
+        g.playSound("200_ME_gotcha.wav");
 
         g.update();
 
@@ -224,6 +239,12 @@ int main(int argc, char *argv[])
             }
         }
     }
+
+    //quit sounds
+    g.quitSound("se_go_ball_throw.wav");
+	g.quitSound("200_ME_gotcha.wav");
+    g.quitSound("se_go_sys_select.wav");
+    g.quitSound("catchtrue.wav");
 
     return 0;
 }

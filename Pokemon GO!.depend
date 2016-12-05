@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # depslib dependency file v1.0
 1480906358 source:c:\users\westo\documents\github\pokemon\main.cpp
 	<iostream>
@@ -92,3 +93,192 @@
 	<vector>
 	<fstream>
 
+=======
+# depslib dependency file v1.0
+1480911550 source:c:\users\westo\documents\github\pokemon\main.cpp
+	<iostream>
+	<string>
+	"Background.h"
+	"Circle.h"
+	"BatteryMeter.h"
+	"Pokemon.h"
+	"Overlays.h"
+	"Pokeball.h"
+	"Score.h"
+	<ctime>
+	<windows.h>
+
+1480803653 c:\users\westo\documents\github\pokemon\background.h
+	"SDL_Plotter.h"
+	<string>
+	<fstream>
+	<vector>
+
+1480912070 c:\users\westo\documents\github\pokemon\sdl_plotter.h
+	<SDL.h>
+	<SDL_mixer.h>
+	<string.h>
+	<iostream>
+	<string>
+	<string.h>
+	<map>
+
+1480808064 c:\users\westo\documents\github\pokemon\batterymeter.h
+	<ctime>
+	"SDL_Plotter.h"
+
+1480803653 source:c:\users\westo\documents\github\pokemon\background.cpp
+	"Background.h"
+
+1480808064 source:c:\users\westo\documents\github\pokemon\batterymeter.cpp
+	"BatteryMeter.h"
+
+1480892837 source:c:\users\westo\documents\github\pokemon\pokemon.cpp
+	"Pokemon.h"
+
+1480907491 c:\users\westo\documents\github\pokemon\pokemon.h
+	"SDL_Plotter.h"
+	"Background.h"
+	"BatteryMeter.h"
+	"Overlays.h"
+	<string>
+	<vector>
+	<fstream>
+
+1480803654 c:\users\westo\documents\github\pokemon\overlays.h
+	"BatteryMeter.h"
+
+1480903988 source:c:\users\westo\documents\github\pokemon\pokeball.cpp
+	"Pokeball.h"
+	"Pokemon.h"
+
+1480911550 c:\users\westo\documents\github\pokemon\pokeball.h
+	"SDL_Plotter.h"
+	"Background.h"
+	"BatteryMeter.h"
+	"Overlays.h"
+	"Pokemon.h"
+	<string>
+	<vector>
+	<fstream>
+
+1480803654 source:c:\users\westo\documents\github\pokemon\overlays.cpp
+	"Overlays.h"
+
+1480822343 source:c:\users\westo\documents\github\pokemon\circle.cpp
+	"Circle.h"
+
+1480823888 c:\users\westo\documents\github\pokemon\circle.h
+	<vector>
+	<string>
+	<fstream>
+	"SDL_Plotter.h"
+	"Background.h"
+
+1480903467 source:c:\users\westo\documents\github\pokemon\score.cpp
+	"Score.h"
+
+1480911550 c:\users\westo\documents\github\pokemon\score.h
+	"SDL_Plotter.h"
+	"Background.h"
+	"BatteryMeter.h"
+	"Overlays.h"
+	"Pokemon.h"
+	<string>
+	<vector>
+	<fstream>
+
+1480908802 source:h:\pokemon-master new\pokemon-master\background.cpp
+	"Background.h"
+
+1480908802 h:\pokemon-master new\pokemon-master\background.h
+	"SDL_Plotter.h"
+	<string>
+	<fstream>
+	<vector>
+
+1480909163 h:\pokemon-master new\pokemon-master\sdl_plotter.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_mixer.h>
+	<string.h>
+	<iostream>
+	<string>
+	<string.h>
+	<map>
+
+1480908802 source:h:\pokemon-master new\pokemon-master\batterymeter.cpp
+	"BatteryMeter.h"
+
+1480908802 h:\pokemon-master new\pokemon-master\batterymeter.h
+	<ctime>
+	"SDL_Plotter.h"
+
+1480908802 source:h:\pokemon-master new\pokemon-master\circle.cpp
+	"Circle.h"
+
+1480908802 h:\pokemon-master new\pokemon-master\circle.h
+	<vector>
+	<string>
+	<fstream>
+	"SDL_Plotter.h"
+	"Background.h"
+
+1480908802 source:h:\pokemon-master new\pokemon-master\overlays.cpp
+	"Overlays.h"
+
+1480908802 h:\pokemon-master new\pokemon-master\overlays.h
+	"BatteryMeter.h"
+
+1480908802 source:h:\pokemon-master new\pokemon-master\pokeball.cpp
+	"Pokeball.h"
+	"Pokemon.h"
+
+1480908802 h:\pokemon-master new\pokemon-master\pokeball.h
+	"SDL_Plotter.h"
+	"Background.h"
+	"BatteryMeter.h"
+	"Overlays.h"
+	"Pokemon.h"
+	<string>
+	<vector>
+	<fstream>
+
+1480908803 h:\pokemon-master new\pokemon-master\pokemon.h
+	"SDL_Plotter.h"
+	"Background.h"
+	"BatteryMeter.h"
+	"Overlays.h"
+	<string>
+	<vector>
+	<fstream>
+
+1480908803 source:h:\pokemon-master new\pokemon-master\pokemon.cpp
+	"Pokemon.h"
+
+1480910787 source:h:\pokemon-master new\pokemon-master\main.cpp
+	<iostream>
+	<string>
+	"Background.h"
+	"Circle.h"
+	"BatteryMeter.h"
+	"Pokemon.h"
+	"Overlays.h"
+	"Pokeball.h"
+	"Score.h"
+	<ctime>
+	<windows.h>
+
+1480908803 h:\pokemon-master new\pokemon-master\score.h
+	"SDL_Plotter.h"
+	"Background.h"
+	"BatteryMeter.h"
+	"Overlays.h"
+	"Pokemon.h"
+	<string>
+	<vector>
+	<fstream>
+
+1480908803 source:h:\pokemon-master new\pokemon-master\score.cpp
+	"Score.h"
+
+>>>>>>> refs/remotes/origin/Final
