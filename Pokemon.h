@@ -52,7 +52,15 @@ class Pokemon{
     //                                                           *
     //************************************************************
     void erase(SDL_Plotter& g, Background bk, int frame, Battery bat);
-
+    //************************************************************
+    // description: gets the location of the pokemon on the      *
+    //              plotter                                      *
+    // return: void                                              *
+    // precondition: integer parameters exist for reference      *
+    // postcondition: passes by reference the pokemon's x and y  *
+    //                position, width, and height of the pokemon *
+    //                                                           *
+    //************************************************************
     void getLocation(int& x, int& y, int& width, int& height);
     //************************************************************
     // description: gets the number of frames from each pokemon  *

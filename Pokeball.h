@@ -25,18 +25,54 @@ using namespace std;
 
 class Pokeball{
     private:
-    vector<vector<vector<Pixels> > >graphic;
-    int dem1, dem2;
-    string line;
-    int frames;
-    int curX, curY;
+        vector<vector<vector<Pixels> > >graphic;
+        int dem1, dem2;
+        string line;
+        int frames;
+        int curX, curY;
 
     public:
-    void generate(string);
-    void draw(SDL_Plotter& g, int frame, int x, int y);
-    void erase(SDL_Plotter& g, Background bk, int frame, Battery bat);
-    int pokeballThrow(SDL_Plotter& g, Background bk, int frame, Battery bat, int x, int y, int goX, int goY, Pokemon a[], int length);
-    int getFrames();
+        void generate(string);
+
+        /*
+         * description: draws the pokeball to the plotter
+         * return: void
+         * precondition: the plotter and integer parameters exist
+         * postcondition: draws the pokeball to the at the inputed frame to
+         *                plotter
+         */
+        void draw(SDL_Plotter& g, int frame, int x, int y);
+
+        /*
+         * description: erases the pokeball from the plotter
+         * return: void
+         * precondition: plotter, background, integer, and battery parameters
+         *               exist
+         * postcondition: erases the pokeball from the plotter
+         */
+        void erase(SDL_Plotter& g, Background bk, int frame, Battery bat);
+
+        /*
+         * description: throws the pokeball to a position using draw and erase
+         *              and finds position of pokemon in read in Pokemon array
+         *              if it is caught
+         * return: int
+         * precondition: plotter, background, integers, battery and array of
+         *               Pokemon exist
+         * postcondition: draws a pokeball being thrown to a position on
+         *                plotter
+         */
+        int pokeballThrow(SDL_Plotter& g, Background bk, int frame,
+                          Battery bat, int x, int y, int goX, int goY,
+                          Pokemon a[], int length);
+
+        /*
+         * description: gets the number of frames of the pokeball
+         * return: int
+         * precondition: frames variable exists
+         * postcondition: returns frames from pokeball object
+         */
+        int getFrames();
 
 };
 
